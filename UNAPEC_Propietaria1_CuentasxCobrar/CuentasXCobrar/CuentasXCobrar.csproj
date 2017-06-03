@@ -106,6 +106,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="EFCxC.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -139,6 +140,7 @@
       <DependentUpon>EFCxC.edmx</DependentUpon>
       <LastGenOutput>EFCxC.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\CxC.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
