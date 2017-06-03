@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CxCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asientos_Contables">
+          <Key>
+            <PropertyRef Name="IdAsiento" />
+          </Key>
+          <Property Name="IdAsiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="IdMovimiento" Type="int" Nullable="false" />
+          <Property Name="Cuenta" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Monto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Balances">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="FechaCorte" Type="date" Nullable="false" />
+          <Property Name="AntiguedadPromedioSaldos" Type="date" Nullable="false" />
+          <Property Name="Monto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="LimiteCredito" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoDocumentos">
+          <Key>
+            <PropertyRef Name="IdDoc" />
+          </Key>
+          <Property Name="IdDoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CuentaContable" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMovimientos">
+          <Key>
+            <PropertyRef Name="IdMovimiento" />
+          </Key>
+          <Property Name="IdMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="IdTrans" />
+          </Key>
+          <Property Name="IdTrans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMovimiento" Type="int" Nullable="false" />
+          <Property Name="IdDoc" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="NumeroDocumento" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Monto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Asientos___IdCli__440B1D61">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Asientos_Contables" Type="Self.Asientos_Contables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Asientos_Contables">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asientos___IdMov__44FF419A">
+          <End Role="TipoMovimientos" Type="Self.TipoMovimientos" Multiplicity="1" />
+          <End Role="Asientos_Contables" Type="Self.Asientos_Contables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimientos">
+              <PropertyRef Name="IdMovimiento" />
+            </Principal>
+            <Dependent Role="Asientos_Contables">
+              <PropertyRef Name="IdMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Balances__IdClie__38996AB5">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Balances" Type="Self.Balances" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Balances">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__IdCli__412EB0B6">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__IdDoc__403A8C7D">
+          <End Role="TipoDocumentos" Type="Self.TipoDocumentos" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumentos">
+              <PropertyRef Name="IdDoc" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="IdDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__IdMov__3F466844">
+          <End Role="TipoMovimientos" Type="Self.TipoMovimientos" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimientos">
+              <PropertyRef Name="IdMovimiento" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="IdMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CxCModelStoreContainer">
+          <EntitySet Name="Asientos_Contables" EntityType="Self.Asientos_Contables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Balances" EntityType="Self.Balances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDocumentos" EntityType="Self.TipoDocumentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMovimientos" EntityType="Self.TipoMovimientos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Asientos___IdCli__440B1D61" Association="Self.FK__Asientos___IdCli__440B1D61">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Asientos_Contables" EntitySet="Asientos_Contables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asientos___IdMov__44FF419A" Association="Self.FK__Asientos___IdMov__44FF419A">
+            <End Role="TipoMovimientos" EntitySet="TipoMovimientos" />
+            <End Role="Asientos_Contables" EntitySet="Asientos_Contables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Balances__IdClie__38996AB5" Association="Self.FK__Balances__IdClie__38996AB5">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Balances" EntitySet="Balances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__IdCli__412EB0B6" Association="Self.FK__Transacci__IdCli__412EB0B6">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__IdDoc__403A8C7D" Association="Self.FK__Transacci__IdDoc__403A8C7D">
+            <End Role="TipoDocumentos" EntitySet="TipoDocumentos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__IdMov__3F466844" Association="Self.FK__Transacci__IdMov__3F466844">
+            <End Role="TipoMovimientos" EntitySet="TipoMovimientos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CxCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Asientos_Contables">
+          <Key>
+            <PropertyRef Name="IdAsiento" />
+          </Key>
+          <Property Name="IdAsiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdMovimiento" Type="Int32" Nullable="false" />
+          <Property Name="Cuenta" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Monto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Asientos___IdCli__440B1D61" FromRole="Asientos_Contables" ToRole="Clientes" />
+          <NavigationProperty Name="TipoMovimientos" Relationship="Self.FK__Asientos___IdMov__44FF419A" FromRole="Asientos_Contables" ToRole="TipoMovimientos" />
+        </EntityType>
+        <EntityType Name="Balances">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="FechaCorte" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AntiguedadPromedioSaldos" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Monto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Balances__IdClie__38996AB5" FromRole="Balances" ToRole="Clientes" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LimiteCredito" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Asientos_Contables" Relationship="Self.FK__Asientos___IdCli__440B1D61" FromRole="Clientes" ToRole="Asientos_Contables" />
+          <NavigationProperty Name="Balances" Relationship="Self.FK__Balances__IdClie__38996AB5" FromRole="Clientes" ToRole="Balances" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.FK__Transacci__IdCli__412EB0B6" FromRole="Clientes" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="TipoDocumentos">
+          <Key>
+            <PropertyRef Name="IdDoc" />
+          </Key>
+          <Property Name="IdDoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CuentaContable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.FK__Transacci__IdDoc__403A8C7D" FromRole="TipoDocumentos" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="TipoMovimientos">
+          <Key>
+            <PropertyRef Name="IdMovimiento" />
+          </Key>
+          <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Asientos_Contables" Relationship="Self.FK__Asientos___IdMov__44FF419A" FromRole="TipoMovimientos" ToRole="Asientos_Contables" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.FK__Transacci__IdMov__3F466844" FromRole="TipoMovimientos" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="IdTrans" />
+          </Key>
+          <Property Name="IdTrans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMovimiento" Type="Int32" Nullable="false" />
+          <Property Name="IdDoc" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="NumeroDocumento" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Monto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Transacci__IdCli__412EB0B6" FromRole="Transacciones" ToRole="Clientes" />
+          <NavigationProperty Name="TipoDocumentos" Relationship="Self.FK__Transacci__IdDoc__403A8C7D" FromRole="Transacciones" ToRole="TipoDocumentos" />
+          <NavigationProperty Name="TipoMovimientos" Relationship="Self.FK__Transacci__IdMov__3F466844" FromRole="Transacciones" ToRole="TipoMovimientos" />
+        </EntityType>
+        <Association Name="FK__Asientos___IdCli__440B1D61">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Asientos_Contables" Type="Self.Asientos_Contables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Asientos_Contables">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asientos___IdMov__44FF419A">
+          <End Role="TipoMovimientos" Type="Self.TipoMovimientos" Multiplicity="1" />
+          <End Role="Asientos_Contables" Type="Self.Asientos_Contables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimientos">
+              <PropertyRef Name="IdMovimiento" />
+            </Principal>
+            <Dependent Role="Asientos_Contables">
+              <PropertyRef Name="IdMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Balances__IdClie__38996AB5">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Balances" Type="Self.Balances" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Balances">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__IdCli__412EB0B6">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__IdDoc__403A8C7D">
+          <End Role="TipoDocumentos" Type="Self.TipoDocumentos" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumentos">
+              <PropertyRef Name="IdDoc" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="IdDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__IdMov__3F466844">
+          <End Role="TipoMovimientos" Type="Self.TipoMovimientos" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimientos">
+              <PropertyRef Name="IdMovimiento" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="IdMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBCuentasxCobrarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Asientos_Contables" EntityType="Self.Asientos_Contables" />
+          <EntitySet Name="Balances" EntityType="Self.Balances" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="TipoDocumentos" EntityType="Self.TipoDocumentos" />
+          <EntitySet Name="TipoMovimientos" EntityType="Self.TipoMovimientos" />
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" />
+          <AssociationSet Name="FK__Asientos___IdCli__440B1D61" Association="Self.FK__Asientos___IdCli__440B1D61">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Asientos_Contables" EntitySet="Asientos_Contables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asientos___IdMov__44FF419A" Association="Self.FK__Asientos___IdMov__44FF419A">
+            <End Role="TipoMovimientos" EntitySet="TipoMovimientos" />
+            <End Role="Asientos_Contables" EntitySet="Asientos_Contables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Balances__IdClie__38996AB5" Association="Self.FK__Balances__IdClie__38996AB5">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Balances" EntitySet="Balances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__IdCli__412EB0B6" Association="Self.FK__Transacci__IdCli__412EB0B6">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__IdDoc__403A8C7D" Association="Self.FK__Transacci__IdDoc__403A8C7D">
+            <End Role="TipoDocumentos" EntitySet="TipoDocumentos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__IdMov__3F466844" Association="Self.FK__Transacci__IdMov__3F466844">
+            <End Role="TipoMovimientos" EntitySet="TipoMovimientos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CxCModelStoreContainer" CdmEntityContainer="DBCuentasxCobrarEntities">
+          <EntitySetMapping Name="Asientos_Contables">
+            <EntityTypeMapping TypeName="CxCModel.Asientos_Contables">
+              <MappingFragment StoreEntitySet="Asientos_Contables">
+                <ScalarProperty Name="IdAsiento" ColumnName="IdAsiento" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
+                <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Balances">
+            <EntityTypeMapping TypeName="CxCModel.Balances">
+              <MappingFragment StoreEntitySet="Balances">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="FechaCorte" ColumnName="FechaCorte" />
+                <ScalarProperty Name="AntiguedadPromedioSaldos" ColumnName="AntiguedadPromedioSaldos" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="CxCModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="LimiteCredito" ColumnName="LimiteCredito" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDocumentos">
+            <EntityTypeMapping TypeName="CxCModel.TipoDocumentos">
+              <MappingFragment StoreEntitySet="TipoDocumentos">
+                <ScalarProperty Name="IdDoc" ColumnName="IdDoc" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMovimientos">
+            <EntityTypeMapping TypeName="CxCModel.TipoMovimientos">
+              <MappingFragment StoreEntitySet="TipoMovimientos">
+                <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transacciones">
+            <EntityTypeMapping TypeName="CxCModel.Transacciones">
+              <MappingFragment StoreEntitySet="Transacciones">
+                <ScalarProperty Name="IdTrans" ColumnName="IdTrans" />
+                <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
+                <ScalarProperty Name="IdDoc" ColumnName="IdDoc" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
