@@ -17,6 +17,9 @@
         <AssociationConnector Association="CxCModel.FK__Transacci__IdCli__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="CxCModel.FK__Transacci__IdDoc__403A8C7D" ManuallyRouted="false" />
         <AssociationConnector Association="CxCModel.FK__Transacci__IdMov__3F466844" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CxCModel.Roles" Width="1.5" PointX="6.375" PointY="1.375" />
+        <EntityTypeShape EntityType="CxCModel.Usuarios" Width="1.5" PointX="8.625" PointY="1" />
+        <AssociationConnector Association="CxCModel.FK__Usuarios__IdRol__571DF1D5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

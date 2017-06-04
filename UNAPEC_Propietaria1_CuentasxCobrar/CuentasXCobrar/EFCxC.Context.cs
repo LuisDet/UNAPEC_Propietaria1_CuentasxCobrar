@@ -31,5 +31,7 @@ namespace CuentasXCobrar
         public virtual DbSet<TipoDocumentos> TipoDocumentos { get; set; }
         public virtual DbSet<TipoMovimientos> TipoMovimientos { get; set; }
         public virtual DbSet<Transacciones> Transacciones { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }
