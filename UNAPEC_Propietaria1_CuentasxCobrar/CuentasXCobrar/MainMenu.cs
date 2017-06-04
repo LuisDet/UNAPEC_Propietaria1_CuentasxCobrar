@@ -16,5 +16,6 @@ namespace CuentasXCobrar
         {
             InitializeComponent();
         }
+
     }
 }
