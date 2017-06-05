@@ -17,5 +17,12 @@ namespace CuentasXCobrar
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Evento temporal 
+            MainMenu form = new MainMenu();
+            form.ShowDialog();
+            this.Close();
+        }
     }
 }
