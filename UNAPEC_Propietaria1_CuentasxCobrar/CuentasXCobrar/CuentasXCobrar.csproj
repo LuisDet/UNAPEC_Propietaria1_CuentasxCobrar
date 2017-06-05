@@ -78,6 +78,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EFCxC.edmx</DependentUpon>
     </Compile>
+    <Compile Include="InicioSesionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioSesionForm.Designer.cs">
+      <DependentUpon>InicioSesionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     <Compile Include="Usuarios.cs">
       <DependentUpon>EFCxC.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="InicioSesionForm.resx">
+      <DependentUpon>InicioSesionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +159,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cruds\Asientos_Contables\" />
+    <Folder Include="Cruds\Balances\" />
+    <Folder Include="Cruds\Clientes\" />
+    <Folder Include="Cruds\TiposDocumentos\" />
+    <Folder Include="Cruds\TiposMovimientos\" />
+    <Folder Include="Cruds\Transacciones\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
