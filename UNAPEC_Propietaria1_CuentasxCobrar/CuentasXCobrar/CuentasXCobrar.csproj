@@ -63,6 +63,18 @@
     <Compile Include="Clientes.cs">
       <DependentUpon>EFCxC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Cruds\TiposMovimientos\FrmDetalles_TiposMovimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cruds\TiposMovimientos\FrmDetalles_TiposMovimientos.Designer.cs">
+      <DependentUpon>FrmDetalles_TiposMovimientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cruds\TiposMovimientos\FrmEditar_TiposMovimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cruds\TiposMovimientos\FrmEditar_TiposMovimientos.Designer.cs">
+      <DependentUpon>FrmEditar_TiposMovimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="EFCxC.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -107,6 +119,12 @@
     <Compile Include="Usuarios.cs">
       <DependentUpon>EFCxC.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Cruds\TiposMovimientos\FrmDetalles_TiposMovimientos.resx">
+      <DependentUpon>FrmDetalles_TiposMovimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cruds\TiposMovimientos\FrmEditar_TiposMovimientos.resx">
+      <DependentUpon>FrmEditar_TiposMovimientos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InicioSesionForm.resx">
       <DependentUpon>InicioSesionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +173,14 @@
       <DependentUpon>EFCxC.edmx</DependentUpon>
       <LastGenOutput>EFCxC.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Guardar.png" />
+    <None Include="Resources\Buscar.png" />
+    <None Include="Resources\Editar.png" />
+    <None Include="Resources\Cancelar.png" />
+    <None Include="Resources\Borrar.png" />
+    <None Include="Resources\Agregar.png" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\Icon1.ico" />
     <None Include="Resources\CxC.png" />
   </ItemGroup>
   <ItemGroup>
@@ -165,7 +191,6 @@
     <Folder Include="Cruds\Balances\" />
     <Folder Include="Cruds\Clientes\" />
     <Folder Include="Cruds\TiposDocumentos\" />
-    <Folder Include="Cruds\TiposMovimientos\" />
     <Folder Include="Cruds\Transacciones\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

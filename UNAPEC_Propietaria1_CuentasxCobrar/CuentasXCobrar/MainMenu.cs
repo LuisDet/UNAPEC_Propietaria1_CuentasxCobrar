@@ -17,5 +17,15 @@ namespace CuentasXCobrar
             InitializeComponent();
         }
 
+        private void detallesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cruds.TiposMovimientos.FrmDetalles_TiposMovimientos form = new Cruds.TiposMovimientos.FrmDetalles_TiposMovimientos();
+            form.ShowDialog();
+        }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
