@@ -77,13 +77,31 @@ namespace CuentasXCobrar.Cruds.Transacciones
 
         private void dgvTransacciones_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = this.dgvTransacciones.SelectedRows[0];
-            TipoMovimientos movimientos = new TipoMovimientos();
-            movimientos.IdMovimiento = Int32.Parse(row.Cells[0].Value.ToString());
-            movimientos.Tipo = row.Cells[1].Value.ToString();
+            DataGridViewRow row = dgvTransacciones.SelectedRows[0];
+            CuentasXCobrar.Transacciones transaccion = new CuentasXCobrar.Transacciones();
+            transaccion.IdTrans = Int32.Parse(row.Cells[0].Value.ToString()); 
+            transaccion.IdMovimiento = Int32.Parse(row.Cells[1].Value.ToString());
+            transaccion.IdDoc = Int32.Parse(row.Cells[2].Value.ToString());
+            transaccion.IdCliente = Int32.Parse(row.Cells[3].Value.ToString());
+            transaccion.NumeroDocumento = Int32.Parse(row.Cells[4].Value.ToString());
+            transaccion.Fecha = Convert.ToDateTime(row.Cells[5].Value.ToString());
+            transaccion.Monto = Convert.ToDecimal(row.Cells[6].Value.ToString()); ;
             FrmEditar_Transacciones fed = new FrmEditar_Transacciones();
             fed.transaccion = transaccion;
             fed.ShowDialog();
+
+            //DataGridViewRow row = dgvTransacciones.SelectedRows[0];
+            //CuentasXCobrar.Transacciones transacciones = new CuentasXCobrar.Transacciones();
+            //transaccion.IdTrans = Convert.ToInt32(row.Cells[0].Value.ToString());
+            //transaccion.IdMovimiento = Convert.ToInt32(row.Cells[1].Value);
+            //transaccion.IdDoc = Convert.ToInt32(row.Cells[2].Value);
+            //transaccion.IdCliente = Convert.ToInt32(row.Cells[3].Value);
+            //transaccion.NumeroDocumento = Convert.ToInt32(row.Cells[4].Value.ToString());
+            //transaccion.Fecha = Convert.ToDateTime(row.Cells[5].Value.ToString());
+            //transaccion.Monto = Convert.ToDecimal(row.Cells[6].Value.ToString());
+            //FrmEditar_Transacciones fed = new FrmEditar_Transacciones();
+            //fed.transaccion = transaccion;
+            //fed.ShowDialog();
         }
     }
 }

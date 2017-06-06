@@ -60,7 +60,7 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
 
         private void dgvTiposMovimientos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = this.dgvTiposMovimientos.SelectedRows[0];
+            DataGridViewRow row = dgvTiposMovimientos.SelectedRows[0];
             TipoMovimientos movimientos = new TipoMovimientos();
             movimientos.IdMovimiento = Int32.Parse(row.Cells[0].Value.ToString());
             movimientos.Tipo = row.Cells[1].Value.ToString();

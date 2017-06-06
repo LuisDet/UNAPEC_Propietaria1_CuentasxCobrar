@@ -59,6 +59,7 @@
             this.tipoMovimientosTableAdapter = new CuentasXCobrar.DBCuentasxCobrarDataSetTableAdapters.TipoMovimientosTableAdapter();
             this.tipoDocumentosTableAdapter = new CuentasXCobrar.DBCuentasxCobrarDataSetTableAdapters.TipoDocumentosTableAdapter();
             this.clientesTableAdapter = new CuentasXCobrar.DBCuentasxCobrarDataSetTableAdapters.ClientesTableAdapter();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoMovimientosBindingSource)).BeginInit();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -147,16 +149,18 @@
             // 
             // nupID
             // 
-            this.nupID.Dock = System.Windows.Forms.DockStyle.Top;
+            this.nupID.Dock = System.Windows.Forms.DockStyle.Left;
             this.nupID.Location = new System.Drawing.Point(159, 3);
             this.nupID.Name = "nupID";
-            this.nupID.Size = new System.Drawing.Size(209, 20);
+            this.nupID.Size = new System.Drawing.Size(178, 20);
             this.nupID.TabIndex = 4;
             this.nupID.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.nupID.Validating += new System.ComponentModel.CancelEventHandler(this.nupID_Validating);
+            this.nupID.Validated += new System.EventHandler(this.nupID_Validated);
             // 
             // label5
             // 
@@ -220,15 +224,18 @@
             // 
             // cbxTipoMovimiento
             // 
+            this.cbxTipoMovimiento.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tipoMovimientosBindingSource, "IdMovimiento", true));
             this.cbxTipoMovimiento.DataSource = this.tipoMovimientosBindingSource;
             this.cbxTipoMovimiento.DisplayMember = "Tipo";
-            this.cbxTipoMovimiento.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbxTipoMovimiento.Dock = System.Windows.Forms.DockStyle.Left;
             this.cbxTipoMovimiento.FormattingEnabled = true;
             this.cbxTipoMovimiento.Location = new System.Drawing.Point(159, 30);
             this.cbxTipoMovimiento.Name = "cbxTipoMovimiento";
-            this.cbxTipoMovimiento.Size = new System.Drawing.Size(209, 21);
+            this.cbxTipoMovimiento.Size = new System.Drawing.Size(178, 21);
             this.cbxTipoMovimiento.TabIndex = 10;
             this.cbxTipoMovimiento.ValueMember = "IdMovimiento";
+            this.cbxTipoMovimiento.Validating += new System.ComponentModel.CancelEventHandler(this.cbxTipoMovimiento_Validating);
+            this.cbxTipoMovimiento.Validated += new System.EventHandler(this.cbxTipoMovimiento_Validated);
             // 
             // tipoMovimientosBindingSource
             // 
@@ -242,15 +249,18 @@
             // 
             // cbxTipoDocumento
             // 
+            this.cbxTipoDocumento.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tipoDocumentosBindingSource, "IdDoc", true));
             this.cbxTipoDocumento.DataSource = this.tipoDocumentosBindingSource;
             this.cbxTipoDocumento.DisplayMember = "Descripcion";
-            this.cbxTipoDocumento.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbxTipoDocumento.Dock = System.Windows.Forms.DockStyle.Left;
             this.cbxTipoDocumento.FormattingEnabled = true;
             this.cbxTipoDocumento.Location = new System.Drawing.Point(159, 56);
             this.cbxTipoDocumento.Name = "cbxTipoDocumento";
-            this.cbxTipoDocumento.Size = new System.Drawing.Size(209, 21);
+            this.cbxTipoDocumento.Size = new System.Drawing.Size(178, 21);
             this.cbxTipoDocumento.TabIndex = 11;
             this.cbxTipoDocumento.ValueMember = "IdDoc";
+            this.cbxTipoDocumento.Validating += new System.ComponentModel.CancelEventHandler(this.cbxTipoDocumento_Validating);
+            this.cbxTipoDocumento.Validated += new System.EventHandler(this.cbxTipoDocumento_Validated);
             // 
             // tipoDocumentosBindingSource
             // 
@@ -259,15 +269,18 @@
             // 
             // cbxCliente
             // 
+            this.cbxCliente.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.clientesBindingSource, "IdCliente", true));
             this.cbxCliente.DataSource = this.clientesBindingSource;
             this.cbxCliente.DisplayMember = "Nombre";
-            this.cbxCliente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbxCliente.Dock = System.Windows.Forms.DockStyle.Left;
             this.cbxCliente.FormattingEnabled = true;
             this.cbxCliente.Location = new System.Drawing.Point(159, 82);
             this.cbxCliente.Name = "cbxCliente";
-            this.cbxCliente.Size = new System.Drawing.Size(209, 21);
+            this.cbxCliente.Size = new System.Drawing.Size(178, 21);
             this.cbxCliente.TabIndex = 12;
             this.cbxCliente.ValueMember = "IdCliente";
+            this.cbxCliente.Validating += new System.ComponentModel.CancelEventHandler(this.cbxCliente_Validating);
+            this.cbxCliente.Validated += new System.EventHandler(this.cbxCliente_Validated);
             // 
             // clientesBindingSource
             // 
@@ -276,30 +289,36 @@
             // 
             // txtNumDoc
             // 
-            this.txtNumDoc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNumDoc.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtNumDoc.Location = new System.Drawing.Point(159, 108);
             this.txtNumDoc.Name = "txtNumDoc";
-            this.txtNumDoc.Size = new System.Drawing.Size(209, 20);
+            this.txtNumDoc.Size = new System.Drawing.Size(178, 20);
             this.txtNumDoc.TabIndex = 13;
+            this.txtNumDoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumDoc_KeyPress);
+            this.txtNumDoc.Validating += new System.ComponentModel.CancelEventHandler(this.txtNumDoc_Validating);
+            this.txtNumDoc.Validated += new System.EventHandler(this.txtNumDoc_Validated);
             // 
             // dtpFecha
             // 
             this.dtpFecha.CustomFormat = "dd-MM-yyyy";
-            this.dtpFecha.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dtpFecha.Dock = System.Windows.Forms.DockStyle.Left;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFecha.Location = new System.Drawing.Point(159, 134);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(209, 20);
+            this.dtpFecha.Size = new System.Drawing.Size(178, 20);
             this.dtpFecha.TabIndex = 14;
             this.dtpFecha.Value = new System.DateTime(2017, 6, 6, 0, 44, 33, 0);
             // 
             // txtMonto
             // 
-            this.txtMonto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtMonto.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtMonto.Location = new System.Drawing.Point(159, 160);
             this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(209, 20);
+            this.txtMonto.Size = new System.Drawing.Size(178, 20);
             this.txtMonto.TabIndex = 15;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
+            this.txtMonto.Validating += new System.ComponentModel.CancelEventHandler(this.txtMonto_Validating);
+            this.txtMonto.Validated += new System.EventHandler(this.txtMonto_Validated);
             // 
             // panel2
             // 
@@ -367,11 +386,16 @@
             // 
             this.clientesTableAdapter.ClearBeforeFill = true;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FrmEditar_Transacciones
             // 
             this.AcceptButton = this.btnGuardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(444, 351);
             this.Controls.Add(this.label4);
@@ -395,6 +419,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,5 +456,6 @@
         private DBCuentasxCobrarDataSetTableAdapters.TipoDocumentosTableAdapter tipoDocumentosTableAdapter;
         private System.Windows.Forms.BindingSource clientesBindingSource;
         private DBCuentasxCobrarDataSetTableAdapters.ClientesTableAdapter clientesTableAdapter;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
