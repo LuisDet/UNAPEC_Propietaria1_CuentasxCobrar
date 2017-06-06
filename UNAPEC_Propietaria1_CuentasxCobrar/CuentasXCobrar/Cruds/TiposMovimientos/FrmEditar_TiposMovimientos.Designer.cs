@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditar_TiposMovimientos));
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,10 +42,12 @@
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupID)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -91,7 +94,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.98039F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.01961F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(309, 66);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(308, 66);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label2
@@ -120,24 +123,28 @@
             // 
             // TxtTipo
             // 
-            this.TxtTipo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TxtTipo.Dock = System.Windows.Forms.DockStyle.Left;
             this.TxtTipo.Location = new System.Drawing.Point(106, 36);
             this.TxtTipo.Name = "TxtTipo";
-            this.TxtTipo.Size = new System.Drawing.Size(200, 20);
+            this.TxtTipo.Size = new System.Drawing.Size(172, 20);
             this.TxtTipo.TabIndex = 3;
+            this.TxtTipo.Validating += new System.ComponentModel.CancelEventHandler(this.TxtTipo_Validating);
+            this.TxtTipo.Validated += new System.EventHandler(this.TxtTipo_Validated);
             // 
             // nupID
             // 
-            this.nupID.Dock = System.Windows.Forms.DockStyle.Top;
+            this.nupID.Dock = System.Windows.Forms.DockStyle.Left;
             this.nupID.Location = new System.Drawing.Point(106, 3);
             this.nupID.Name = "nupID";
-            this.nupID.Size = new System.Drawing.Size(200, 20);
+            this.nupID.Size = new System.Drawing.Size(172, 20);
             this.nupID.TabIndex = 4;
             this.nupID.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.nupID.Validating += new System.ComponentModel.CancelEventHandler(this.nupID_Validating);
+            this.nupID.Validated += new System.EventHandler(this.nupID_Validated);
             // 
             // panel2
             // 
@@ -170,6 +177,7 @@
             this.btnCancelar.Size = new System.Drawing.Size(45, 45);
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -182,16 +190,23 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FrmEditar_TiposMovimientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(394, 231);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmEditar_TiposMovimientos";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -202,6 +217,7 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupID)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,5 +237,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.NumericUpDown nupID;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

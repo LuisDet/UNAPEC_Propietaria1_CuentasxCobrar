@@ -30,11 +30,7 @@ namespace CuentasXCobrar.Cruds.Transacciones
             this.tipoDocumentosTableAdapter.Fill(this.dBCuentasxCobrarDataSet.TipoDocumentos);
             // TODO: This line of code loads data into the 'dBCuentasxCobrarDataSet.TipoMovimientos' table. You can move, or remove it, as needed.
             this.tipoMovimientosTableAdapter.Fill(this.dBCuentasxCobrarDataSet.TipoMovimientos);
-            //ocon = new SqlConnection("Data Source=software-unapec.database.windows.net;Initial Catalog=DBCuentasxCobrar;Integrated Security=False;User ID=unapecsql;Password=admin@1234;Connect Timeout=15;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            //ocon.Open();
-            //llenarCbxTipoMovimientos();
-            //llenarCbxCliente();
-            //llenarCbxTipoDocumento();
+
 
             if (transaccion != null)
             {
@@ -47,41 +43,6 @@ namespace CuentasXCobrar.Cruds.Transacciones
                 txtMonto.Text = transaccion.Monto.ToString();
             }
         }
-
-        //private void llenarCbxTipoMovimientos()
-        //{
-        //    string sSQL = "SELECT TipoMovimientos.IdMovimiento, TipoMovimientos.Tipo FROM TipoMovimientos order by TipoMovimientos.IdMovimiento";
-        //    SqlDataAdapter oDa = new SqlDataAdapter(sSQL, ocon);
-        //    DataTable oTabla = new DataTable();
-        //    oDa.Fill(oTabla);
-
-        //    cbxTipoMovimiento.DataSource = oTabla;
-        //    cbxTipoMovimiento.DisplayMember = "TipoMovimientos.Tipo";
-        //    cbxTipoMovimiento.ValueMember = "TipoMovimientos.IdMovimiento";
-        //}
-
-        //private void llenarCbxCliente()
-        //{
-        //    string sSQL = "SELECT Clientes.IdCliente, Clientes.Nombre FROM Clientes order by Clientes.IdCliente";
-        //    SqlDataAdapter oDa = new SqlDataAdapter(sSQL, ocon);
-        //    DataTable oTabla = new DataTable();
-        //    oDa.Fill(oTabla);
-
-        //    cbxCliente.DataSource = oTabla;
-        //    cbxCliente.DisplayMember = "Clientes.Nombre";
-        //    cbxCliente.ValueMember = "Clientes.IdCliente";
-        //}
-        //private void llenarCbxTipoDocumento()
-        //{
-        //    string sSQL = "SELECT TipoDocumentos.IdDoc, TipoDocumentos.Descripcion FROM TipoDocumentos order by TipoDocumentos.IdDoc";
-        //    SqlDataAdapter oDa = new SqlDataAdapter(sSQL, ocon);
-        //    DataTable oTabla = new DataTable();
-        //    oDa.Fill(oTabla);
-
-        //    cbxTipoDocumento.DataSource = oTabla;
-        //    cbxTipoDocumento.DisplayMember = "TipoDocumentos.Descripcion";
-        //    cbxTipoDocumento.ValueMember = "TipoDocumentos.IdDoc";
-        //}
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -114,6 +75,11 @@ namespace CuentasXCobrar.Cruds.Transacciones
             {
                 MessageBox.Show("El movimiento no existe");
             }
+            this.Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

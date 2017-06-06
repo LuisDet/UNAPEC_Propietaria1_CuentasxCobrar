@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,15 +32,23 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            entities.TipoMovimientos.Add(new TipoMovimientos
+            if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
-                IdMovimiento = Convert.ToInt16(nupID.Value),
-                Tipo = TxtTipo.Text,
-            });
-            entities.SaveChanges();
-            MessageBox.Show("Datos guardados con exito");
-            this.Close();
-
+                entities.TipoMovimientos.Add(new TipoMovimientos
+                {
+                    IdMovimiento = (int)nupID.Value,
+                    Tipo = TxtTipo.Text,
+                });
+                entities.SaveChanges();
+                MessageBox.Show("Datos guardados con exito");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Datos invalidos. Ingrese datos correctos.");
+                this.Focus();
+            }
+           
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
@@ -56,6 +65,72 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
                 MessageBox.Show("El movimiento no existe");
             }
             this.Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void nupID_Validating(object sender, CancelEventArgs e)
+        {
+            var Movimientos = from em in entities.TipoMovimientos
+                              where (em.IdMovimiento == (int)nupID.Value
+                              )
+                              select em.IdMovimiento;
+
+            int Contador = Movimientos.Count();
+
+            bool cancel = false; 
+            if (Contador < 0)
+            {
+                cancel = false;
+            }
+            else
+            {
+                cancel = true;
+                this.errorProvider1.SetError(this.nupID, "El ID ingresado ya existe. Por favor coloque un ID valido");
+            }
+            e.Cancel = cancel;
+
+            
+        }
+
+        private void nupID_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider1.SetError(this.nupID, string.Empty);
+        }
+
+        private void TxtTipo_Validating(object sender, CancelEventArgs e)
+        {
+            bool cancel = false;
+            var Movimientos = from em in entities.TipoMovimientos
+                              where (em.Tipo == TxtTipo.Text
+                              )
+                              select em.Tipo;
+            if (TxtTipo.Text != Movimientos.ToString())
+            {
+                if (TxtTipo.Text != "")
+                {
+                    cancel = false;
+                }
+                else
+                {
+                    cancel = true;
+                    this.errorProvider1.SetError(this.TxtTipo, "Debe ingresar un Tipo.");
+                }
+            }
+            else
+            {
+                cancel = true;
+                this.errorProvider1.SetError(this.TxtTipo, "El Tipo ingresado ya existe. Por favor coloque un Tipo valido.");
+            }
+            e.Cancel = cancel;
+        }
+
+        private void TxtTipo_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider1.SetError(this.TxtTipo, string.Empty);
         }
     }
 }
