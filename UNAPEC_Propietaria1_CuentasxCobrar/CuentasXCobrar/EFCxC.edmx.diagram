@@ -5,21 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1316b031db9d4c31970f9a82c7b3fb5e" Name="Diagram1">
-        <EntityTypeShape EntityType="CxCModel.Asientos_Contables" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CxCModel.Balances" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CxCModel.Clientes" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CxCModel.TipoDocumentos" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CxCModel.TipoMovimientos" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="CxCModel.Transacciones" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
-        <AssociationConnector Association="CxCModel.FK__Asientos___IdCli__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="CxCModel.FK__Asientos___IdMov__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="CxCModel.FK__Balances__IdClie__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="CxCModel.FK__Transacci__IdCli__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="CxCModel.FK__Transacci__IdDoc__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="CxCModel.FK__Transacci__IdMov__3F466844" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="CxCModel.Roles" Width="1.5" PointX="6.375" PointY="1.375" />
         <EntityTypeShape EntityType="CxCModel.Usuarios" Width="1.5" PointX="8.625" PointY="1" />
+        <EntityTypeShape EntityType="CxCModel.Asientos_Contables" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="CxCModel.Balances" Width="1.5" PointX="3" PointY="12.125" />
+        <EntityTypeShape EntityType="CxCModel.Clientes" Width="1.5" PointX="0.75" PointY="4.625" />
+        <EntityTypeShape EntityType="CxCModel.Roles" Width="1.5" PointX="6.75" PointY="1.375" />
+        <EntityTypeShape EntityType="CxCModel.TipoDocumentos" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="CxCModel.TipoMovimientos" Width="1.5" PointX="3.75" PointY="1" />
+        <EntityTypeShape EntityType="CxCModel.Transacciones" Width="1.5" PointX="3" PointY="4.375" />
+        <AssociationConnector Association="CxCModel.FK__Asientos___IdCli__440B1D61" />
+        <AssociationConnector Association="CxCModel.FK__Asientos___IdMov__44FF419A" />
+        <AssociationConnector Association="CxCModel.FK__Balances__IdClie__38996AB5" />
+        <AssociationConnector Association="CxCModel.FK__Transacci__IdCli__412EB0B6" />
         <AssociationConnector Association="CxCModel.FK__Usuarios__IdRol__571DF1D5" />
+        <AssociationConnector Association="CxCModel.FK__Transacci__IdDoc__403A8C7D" />
+        <AssociationConnector Association="CxCModel.FK__Transacci__IdMov__3F466844" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

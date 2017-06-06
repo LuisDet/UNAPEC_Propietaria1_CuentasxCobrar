@@ -21,7 +21,7 @@ namespace CuentasXCobrar
         {
             //Evento temporal 
             MainMenu form = new MainMenu();
-            form.ShowDialog();
+            form.Show();
             this.Close();
         }
     }

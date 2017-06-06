@@ -25,13 +25,13 @@ namespace CuentasXCobrar
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Asientos_Contables> Asientos_Contables { get; set; }
         public virtual DbSet<Balances> Balances { get; set; }
         public virtual DbSet<Clientes> Clientes { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<TipoDocumentos> TipoDocumentos { get; set; }
         public virtual DbSet<TipoMovimientos> TipoMovimientos { get; set; }
         public virtual DbSet<Transacciones> Transacciones { get; set; }
-        public virtual DbSet<Roles> Roles { get; set; }
-        public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }

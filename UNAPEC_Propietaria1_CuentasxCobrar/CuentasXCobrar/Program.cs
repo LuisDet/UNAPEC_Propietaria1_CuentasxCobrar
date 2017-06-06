@@ -16,7 +16,7 @@ namespace CuentasXCobrar
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InicioSesionForm());
+            Application.Run(new MainMenu());
         }
     }
 }

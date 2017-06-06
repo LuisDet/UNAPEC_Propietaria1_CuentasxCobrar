@@ -159,7 +159,7 @@
             // 
             this.dgvTiposMovimientos.AllowUserToAddRows = false;
             this.dgvTiposMovimientos.AllowUserToDeleteRows = false;
-            this.dgvTiposMovimientos.AllowUserToOrderColumns = true;
+            this.dgvTiposMovimientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTiposMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTiposMovimientos.Location = new System.Drawing.Point(3, 3);
             this.dgvTiposMovimientos.Name = "dgvTiposMovimientos";

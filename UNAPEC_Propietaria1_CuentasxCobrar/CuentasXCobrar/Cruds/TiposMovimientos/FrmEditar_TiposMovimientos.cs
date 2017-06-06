@@ -33,6 +33,7 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
         {
             entities.TipoMovimientos.Add(new TipoMovimientos
             {
+                IdMovimiento = Convert.ToInt16(nupID.Value),
                 Tipo = TxtTipo.Text,
             });
             entities.SaveChanges();
