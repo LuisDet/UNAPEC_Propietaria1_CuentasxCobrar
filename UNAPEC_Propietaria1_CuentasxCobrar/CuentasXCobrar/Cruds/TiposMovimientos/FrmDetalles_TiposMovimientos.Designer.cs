@@ -216,7 +216,7 @@
             this.Name = "FrmDetalles_TiposMovimientos";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmDetalles_TiposMovimientos";
+            this.Text = "Tipos de Movimientos";
             this.Activated += new System.EventHandler(this.FrmDetalles_TiposMovimientos_Activated);
             this.Load += new System.EventHandler(this.FrmDetalles_TiposMovimientos_Load);
             this.menuStrip1.ResumeLayout(false);

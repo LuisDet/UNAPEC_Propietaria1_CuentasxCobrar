@@ -34,22 +34,28 @@ namespace CuentasXCobrar.Cruds.Transacciones
         private void consultarTransacciones()
         {
             var Transaccion = from em in entities.Transacciones
-                              select new { em.IdTrans, em.IdMovimiento, em.IdDoc, em.IdCliente, em.NumeroDocumento, em.Fecha, em.Monto };
+                              join em2 in entities.TipoMovimientos on em.IdMovimiento equals em2.IdMovimiento
+                              join em3 in entities.TipoDocumentos on em.IdDoc equals em3.IdDoc
+                              join em4 in entities.Clientes on em.IdCliente equals em4.IdCliente
+                              select new { em.IdTrans, em2.Tipo, em3.Descripcion, em4.Nombre, em.NumeroDocumento, em.Fecha, em.Monto };
             dgvTransacciones.DataSource = Transaccion.ToList();
         }
 
         private void consultarPorCriterio()
         {
             var Transaccion = from em in entities.Transacciones
+                              join em2 in entities.TipoMovimientos on em.IdMovimiento equals em2.IdMovimiento
+                              join em3 in entities.TipoDocumentos on em.IdDoc equals em3.IdDoc
+                              join em4 in entities.Clientes on em.IdCliente equals em4.IdCliente
                               where (em.IdTrans.ToString().StartsWith(TxtBuscar.Text) ||
-                              em.IdMovimiento.ToString().StartsWith(TxtBuscar.Text) ||
-                              em.IdDoc.ToString().StartsWith(TxtBuscar.Text) ||
-                              em.IdCliente.ToString().StartsWith(TxtBuscar.Text) ||
+                              em2.Tipo.StartsWith(TxtBuscar.Text) ||
+                              em3.Descripcion.StartsWith(TxtBuscar.Text) ||
+                              em4.Nombre.StartsWith(TxtBuscar.Text) ||
                               em.NumeroDocumento.ToString().StartsWith(TxtBuscar.Text) ||
                               em.Fecha.ToString().StartsWith(TxtBuscar.Text) ||
                               em.Monto.ToString().StartsWith(TxtBuscar.Text)
                               )
-                              select new { em.IdTrans, em.IdMovimiento, em.IdDoc, em.IdCliente, em.NumeroDocumento, em.Fecha, em.Monto };
+                              select new { em.IdTrans, em2.Tipo, em3.Descripcion, em4.Nombre, em.NumeroDocumento, em.Fecha, em.Monto };
             dgvTransacciones.DataSource = Transaccion.ToList();
         }
 

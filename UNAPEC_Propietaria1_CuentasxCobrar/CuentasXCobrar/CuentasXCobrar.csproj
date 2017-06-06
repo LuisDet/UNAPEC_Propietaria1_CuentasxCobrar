@@ -87,6 +87,11 @@
     <Compile Include="Cruds\Transacciones\FrmEditar_Transacciones.Designer.cs">
       <DependentUpon>FrmEditar_Transacciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBCuentasxCobrarDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="EFCxC.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,6 +168,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EFCxC.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="DBCuentasxCobrarDataSet.xsc">
+      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBCuentasxCobrarDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCuentasxCobrarDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBCuentasxCobrarDataSet.xss">
+      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
+    </None>
     <None Include="EFCxC.edmx.diagram">
       <DependentUpon>EFCxC.edmx</DependentUpon>
     </None>

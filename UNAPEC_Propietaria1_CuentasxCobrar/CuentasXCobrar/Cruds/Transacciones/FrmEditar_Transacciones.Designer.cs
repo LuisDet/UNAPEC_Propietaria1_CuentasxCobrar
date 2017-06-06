@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditar_Transacciones));
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -40,8 +42,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cbxTipoMovimiento = new System.Windows.Forms.ComboBox();
+            this.tipoMovimientosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dBCuentasxCobrarDataSet = new CuentasXCobrar.DBCuentasxCobrarDataSet();
             this.cbxTipoDocumento = new System.Windows.Forms.ComboBox();
+            this.tipoDocumentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbxCliente = new System.Windows.Forms.ComboBox();
+            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtNumDoc = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.txtMonto = new System.Windows.Forms.TextBox();
@@ -50,8 +56,15 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tipoMovimientosTableAdapter = new CuentasXCobrar.DBCuentasxCobrarDataSetTableAdapters.TipoMovimientosTableAdapter();
+            this.tipoDocumentosTableAdapter = new CuentasXCobrar.DBCuentasxCobrarDataSetTableAdapters.TipoDocumentosTableAdapter();
+            this.clientesTableAdapter = new CuentasXCobrar.DBCuentasxCobrarDataSetTableAdapters.ClientesTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoMovimientosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBCuentasxCobrarDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -207,30 +220,59 @@
             // 
             // cbxTipoMovimiento
             // 
+            this.cbxTipoMovimiento.DataSource = this.tipoMovimientosBindingSource;
+            this.cbxTipoMovimiento.DisplayMember = "Tipo";
             this.cbxTipoMovimiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.cbxTipoMovimiento.FormattingEnabled = true;
             this.cbxTipoMovimiento.Location = new System.Drawing.Point(159, 30);
             this.cbxTipoMovimiento.Name = "cbxTipoMovimiento";
             this.cbxTipoMovimiento.Size = new System.Drawing.Size(209, 21);
             this.cbxTipoMovimiento.TabIndex = 10;
+            this.cbxTipoMovimiento.ValueMember = "IdMovimiento";
+            // 
+            // tipoMovimientosBindingSource
+            // 
+            this.tipoMovimientosBindingSource.DataMember = "TipoMovimientos";
+            this.tipoMovimientosBindingSource.DataSource = this.dBCuentasxCobrarDataSet;
+            // 
+            // dBCuentasxCobrarDataSet
+            // 
+            this.dBCuentasxCobrarDataSet.DataSetName = "DBCuentasxCobrarDataSet";
+            this.dBCuentasxCobrarDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // cbxTipoDocumento
             // 
+            this.cbxTipoDocumento.DataSource = this.tipoDocumentosBindingSource;
+            this.cbxTipoDocumento.DisplayMember = "Descripcion";
             this.cbxTipoDocumento.Dock = System.Windows.Forms.DockStyle.Top;
             this.cbxTipoDocumento.FormattingEnabled = true;
             this.cbxTipoDocumento.Location = new System.Drawing.Point(159, 56);
             this.cbxTipoDocumento.Name = "cbxTipoDocumento";
             this.cbxTipoDocumento.Size = new System.Drawing.Size(209, 21);
             this.cbxTipoDocumento.TabIndex = 11;
+            this.cbxTipoDocumento.ValueMember = "IdDoc";
+            // 
+            // tipoDocumentosBindingSource
+            // 
+            this.tipoDocumentosBindingSource.DataMember = "TipoDocumentos";
+            this.tipoDocumentosBindingSource.DataSource = this.dBCuentasxCobrarDataSet;
             // 
             // cbxCliente
             // 
+            this.cbxCliente.DataSource = this.clientesBindingSource;
+            this.cbxCliente.DisplayMember = "Nombre";
             this.cbxCliente.Dock = System.Windows.Forms.DockStyle.Top;
             this.cbxCliente.FormattingEnabled = true;
             this.cbxCliente.Location = new System.Drawing.Point(159, 82);
             this.cbxCliente.Name = "cbxCliente";
             this.cbxCliente.Size = new System.Drawing.Size(209, 21);
             this.cbxCliente.TabIndex = 12;
+            this.cbxCliente.ValueMember = "IdCliente";
+            // 
+            // clientesBindingSource
+            // 
+            this.clientesBindingSource.DataMember = "Clientes";
+            this.clientesBindingSource.DataSource = this.dBCuentasxCobrarDataSet;
             // 
             // txtNumDoc
             // 
@@ -311,6 +353,18 @@
             this.panel1.Size = new System.Drawing.Size(422, 241);
             this.panel1.TabIndex = 11;
             // 
+            // tipoMovimientosTableAdapter
+            // 
+            this.tipoMovimientosTableAdapter.ClearBeforeFill = true;
+            // 
+            // tipoDocumentosTableAdapter
+            // 
+            this.tipoDocumentosTableAdapter.ClearBeforeFill = true;
+            // 
+            // clientesTableAdapter
+            // 
+            this.clientesTableAdapter.ClearBeforeFill = true;
+            // 
             // FrmEditar_Transacciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -320,12 +374,19 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmEditar_Transacciones";
-            this.Text = "FrmEditar_Transacciones";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Agregar/Editar";
             this.Load += new System.EventHandler(this.FrmEditar_Transacciones_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoMovimientosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBCuentasxCobrarDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -357,5 +418,12 @@
         private System.Windows.Forms.TextBox txtNumDoc;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.TextBox txtMonto;
+        private DBCuentasxCobrarDataSet dBCuentasxCobrarDataSet;
+        private System.Windows.Forms.BindingSource tipoMovimientosBindingSource;
+        private DBCuentasxCobrarDataSetTableAdapters.TipoMovimientosTableAdapter tipoMovimientosTableAdapter;
+        private System.Windows.Forms.BindingSource tipoDocumentosBindingSource;
+        private DBCuentasxCobrarDataSetTableAdapters.TipoDocumentosTableAdapter tipoDocumentosTableAdapter;
+        private System.Windows.Forms.BindingSource clientesBindingSource;
+        private DBCuentasxCobrarDataSetTableAdapters.ClientesTableAdapter clientesTableAdapter;
     }
 }
