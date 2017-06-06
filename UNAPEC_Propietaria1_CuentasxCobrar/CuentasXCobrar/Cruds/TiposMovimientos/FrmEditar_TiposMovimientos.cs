@@ -52,7 +52,9 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
                 MessageBox.Show("El Movimiento ha sido eliminado con exito");
             }
             else
+            {
                 MessageBox.Show("El movimiento no existe");
+            }
             this.Close();
         }
     }

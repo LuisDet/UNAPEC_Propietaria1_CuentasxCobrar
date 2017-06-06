@@ -12,8 +12,9 @@ namespace CuentasXCobrar.Cruds.Transacciones
 {
     public partial class FrmDetalles_Transacciones : Form
     {
-        //public  movimientos { get; set; }
+        public CuentasXCobrar.Transacciones transaccion { get; set; }
         private DBCuentasxCobrarEntities entities = new DBCuentasxCobrarEntities();
+
         public FrmDetalles_Transacciones()
         {
             InitializeComponent();
@@ -27,7 +28,56 @@ namespace CuentasXCobrar.Cruds.Transacciones
 
         private void FrmDetalles_Transacciones_Load(object sender, EventArgs e)
         {
+            consultarTransacciones();
+        }
 
+        private void consultarTransacciones()
+        {
+            var Transaccion = from em in entities.Transacciones
+                              select new { em.IdTrans, em.IdMovimiento, em.IdDoc, em.IdCliente, em.NumeroDocumento, em.Fecha, em.Monto };
+            dgvTransacciones.DataSource = Transaccion.ToList();
+        }
+
+        private void consultarPorCriterio()
+        {
+            var Transaccion = from em in entities.Transacciones
+                              where (em.IdTrans.ToString().StartsWith(TxtBuscar.Text) ||
+                              em.IdMovimiento.ToString().StartsWith(TxtBuscar.Text) ||
+                              em.IdDoc.ToString().StartsWith(TxtBuscar.Text) ||
+                              em.IdCliente.ToString().StartsWith(TxtBuscar.Text) ||
+                              em.NumeroDocumento.ToString().StartsWith(TxtBuscar.Text) ||
+                              em.Fecha.ToString().StartsWith(TxtBuscar.Text) ||
+                              em.Monto.ToString().StartsWith(TxtBuscar.Text)
+                              )
+                              select new { em.IdTrans, em.IdMovimiento, em.IdDoc, em.IdCliente, em.NumeroDocumento, em.Fecha, em.Monto };
+            dgvTransacciones.DataSource = Transaccion.ToList();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            consultarPorCriterio();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmEditar_Transacciones form = new FrmEditar_Transacciones();
+            form.ShowDialog();
+        }
+
+        private void FrmDetalles_Transacciones_Activated(object sender, EventArgs e)
+        {
+            consultarTransacciones();
+        }
+
+        private void dgvTransacciones_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = this.dgvTransacciones.SelectedRows[0];
+            TipoMovimientos movimientos = new TipoMovimientos();
+            movimientos.IdMovimiento = Int32.Parse(row.Cells[0].Value.ToString());
+            movimientos.Tipo = row.Cells[1].Value.ToString();
+            FrmEditar_Transacciones fed = new FrmEditar_Transacciones();
+            fed.transaccion = transaccion;
+            fed.ShowDialog();
         }
     }
 }

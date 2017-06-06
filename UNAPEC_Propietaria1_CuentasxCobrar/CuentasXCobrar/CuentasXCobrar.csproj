@@ -140,6 +140,9 @@
     <EmbeddedResource Include="Cruds\Transacciones\FrmDetalles_Transacciones.resx">
       <DependentUpon>FrmDetalles_Transacciones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cruds\Transacciones\FrmEditar_Transacciones.resx">
+      <DependentUpon>FrmEditar_Transacciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InicioSesionForm.resx">
       <DependentUpon>InicioSesionForm.cs</DependentUpon>
     </EmbeddedResource>

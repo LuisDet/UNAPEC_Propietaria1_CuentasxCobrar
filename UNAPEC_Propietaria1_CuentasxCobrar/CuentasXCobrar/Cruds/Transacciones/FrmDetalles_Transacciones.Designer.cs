@@ -71,7 +71,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -95,6 +95,7 @@
             this.btnAgregar.Size = new System.Drawing.Size(45, 45);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label4
             // 
@@ -125,6 +126,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(45, 45);
             this.btnBuscar.TabIndex = 1;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // groupBox1
             // 
@@ -195,6 +197,7 @@
             this.dgvTransacciones.ReadOnly = true;
             this.dgvTransacciones.Size = new System.Drawing.Size(551, 307);
             this.dgvTransacciones.TabIndex = 0;
+            this.dgvTransacciones.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTransacciones_CellDoubleClick);
             // 
             // FrmDetalles_Transacciones
             // 
@@ -210,6 +213,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmDetalles_Transacciones";
             this.Text = "FrmDetalles_Transacciones";
+            this.Activated += new System.EventHandler(this.FrmDetalles_Transacciones_Activated);
             this.Load += new System.EventHandler(this.FrmDetalles_Transacciones_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
