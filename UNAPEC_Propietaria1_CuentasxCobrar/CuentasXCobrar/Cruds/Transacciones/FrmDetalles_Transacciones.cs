@@ -33,16 +33,19 @@ namespace CuentasXCobrar.Cruds.Transacciones
         private void cargarTransacciones()
         {
             dgvTrans.DataSource = entities.Transacciones.ToList();
+            dgvTrans.Columns[7].Visible = false;
+            dgvTrans.Columns[8].Visible = false;
+            dgvTrans.Columns[9].Visible = false;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            consultarPorCriterio();
+            CargarPorConsulta();
         }
 
-        private void consultarPorCriterio()
+        private void CargarPorConsulta()
         {
-            var Transacciones_Criterio = from em in entities.Transacciones
+            var Transacciones_Consulta = from em in entities.Transacciones
                             where (em.IdTrans.ToString().StartsWith(TxtBuscar.Text) ||
                             em.NumeroDocumento.ToString().StartsWith(TxtBuscar.Text) ||
                             em.Monto.ToString().StartsWith(TxtBuscar.Text) ||
@@ -51,7 +54,10 @@ namespace CuentasXCobrar.Cruds.Transacciones
                             em.IdCliente.ToString().StartsWith(TxtBuscar.Text)
                             )
                             select em;
-            dgvTrans.DataSource = Transacciones_Criterio.ToList();
+            dgvTrans.DataSource = Transacciones_Consulta.ToList();
+            dgvTrans.Columns[7].Visible = false;
+            dgvTrans.Columns[8].Visible = false;
+            dgvTrans.Columns[9].Visible = false;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
