@@ -75,26 +75,6 @@
     <Compile Include="Cruds\TiposMovimientos\FrmEditar_TiposMovimientos.Designer.cs">
       <DependentUpon>FrmEditar_TiposMovimientos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cruds\Transacciones\FrmDetalles_Transacciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cruds\Transacciones\FrmDetalles_Transacciones.Designer.cs">
-      <DependentUpon>FrmDetalles_Transacciones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cruds\Transacciones\FrmEditar_Transacciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cruds\Transacciones\FrmEditar_Transacciones.Designer.cs">
-      <DependentUpon>FrmEditar_Transacciones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DBCuentasxCobrarDataSet.cs">
-      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBCuentasxCobrarDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="EFCxC.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,12 +125,6 @@
     <EmbeddedResource Include="Cruds\TiposMovimientos\FrmEditar_TiposMovimientos.resx">
       <DependentUpon>FrmEditar_TiposMovimientos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cruds\Transacciones\FrmDetalles_Transacciones.resx">
-      <DependentUpon>FrmDetalles_Transacciones.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cruds\Transacciones\FrmEditar_Transacciones.resx">
-      <DependentUpon>FrmEditar_Transacciones.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="InicioSesionForm.resx">
       <DependentUpon>InicioSesionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,17 +145,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EFCxC.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DBCuentasxCobrarDataSet.xsc">
-      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DBCuentasxCobrarDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCuentasxCobrarDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DBCuentasxCobrarDataSet.xss">
-      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
-    </None>
     <None Include="EFCxC.edmx.diagram">
       <DependentUpon>EFCxC.edmx</DependentUpon>
     </None>
@@ -228,6 +191,7 @@
     <Folder Include="Cruds\Balances\" />
     <Folder Include="Cruds\Clientes\" />
     <Folder Include="Cruds\TiposDocumentos\" />
+    <Folder Include="Cruds\Transacciones\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
