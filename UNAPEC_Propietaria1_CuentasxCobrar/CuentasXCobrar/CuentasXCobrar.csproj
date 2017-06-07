@@ -87,6 +87,9 @@
     <Compile Include="Cruds\Transacciones\FrmEditar_Transacciones.Designer.cs">
       <DependentUpon>FrmEditar_Transacciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBCuentasxCobrarDataSet.cs">
+      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DBCuentasxCobrarDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
