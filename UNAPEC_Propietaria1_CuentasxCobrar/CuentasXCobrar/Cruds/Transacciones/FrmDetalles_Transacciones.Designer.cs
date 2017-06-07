@@ -191,6 +191,7 @@
             this.dgvTrans.AllowUserToAddRows = false;
             this.dgvTrans.AllowUserToDeleteRows = false;
             this.dgvTrans.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTrans.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvTrans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrans.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTrans.Location = new System.Drawing.Point(0, 0);
