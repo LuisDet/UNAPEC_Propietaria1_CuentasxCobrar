@@ -20,7 +20,6 @@ namespace CuentasXCobrar.Cruds.Transacciones
             InitializeComponent();
         }
 
-        #region Cargar Datos del Datagrid View y Consultas.
         private void FrmDetalles_Transacciones_Load(object sender, EventArgs e)
         {
             cargarTransacciones();
@@ -35,21 +34,9 @@ namespace CuentasXCobrar.Cruds.Transacciones
         private void cargarTransacciones()
         {
             dgvTrans.DataSource = entities.Transacciones.ToList();
-            dgvTrans.Columns[1].Visible = false;
-            dgvTrans.Columns[3].Visible = false;
-            dgvTrans.Columns[5].Visible = false;
-            dgvTrans.Columns[10].Visible = false;
-            dgvTrans.Columns[11].Visible = false;
-            dgvTrans.Columns[12].Visible = false;
-
-            dgvTrans.Columns[0].HeaderText = "Id";
-            dgvTrans.Columns[2].HeaderText = "Movimiento";
-            dgvTrans.Columns[4].HeaderText = "Documento";
-            dgvTrans.Columns[6].HeaderText = "Cliente";
-            dgvTrans.Columns[7].HeaderText = "No. Documento";
-            dgvTrans.Columns[8].HeaderText = "Fecha";
-            dgvTrans.Columns[9].HeaderText = "Monto";
-
+            dgvTrans.Columns[7].Visible = false;
+            dgvTrans.Columns[8].Visible = false;
+            dgvTrans.Columns[9].Visible = false;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -69,22 +56,10 @@ namespace CuentasXCobrar.Cruds.Transacciones
                             )
                             select em;
             dgvTrans.DataSource = Transacciones_Consulta.ToList();
-            dgvTrans.Columns[1].Visible = false;
-            dgvTrans.Columns[3].Visible = false;
-            dgvTrans.Columns[5].Visible = false;
-            dgvTrans.Columns[10].Visible = false;
-            dgvTrans.Columns[11].Visible = false;
-            dgvTrans.Columns[12].Visible = false;
-
-            dgvTrans.Columns[0].HeaderText = "Id";
-            dgvTrans.Columns[2].HeaderText = "Movimiento";
-            dgvTrans.Columns[4].HeaderText = "Documento";
-            dgvTrans.Columns[6].HeaderText = "Cliente";
-            dgvTrans.Columns[7].HeaderText = "No. Documento";
-            dgvTrans.Columns[8].HeaderText = "Fecha";
-            dgvTrans.Columns[9].HeaderText = "Monto";
+            dgvTrans.Columns[7].Visible = false;
+            dgvTrans.Columns[8].Visible = false;
+            dgvTrans.Columns[9].Visible = false;
         }
-        #endregion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -95,26 +70,26 @@ namespace CuentasXCobrar.Cruds.Transacciones
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
-        #region Enviar datos de la fila seleccionada del datagridview hacia otro formulario.
         private void dgvTrans_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.dgvTrans.CurrentRow;
             CuentasXCobrar.Transacciones transacciones = new CuentasXCobrar.Transacciones();
             transacciones.IdTrans = Int32.Parse(row.Cells[0].Value.ToString());
             transacciones.IdMovimiento = Int32.Parse(row.Cells[1].Value.ToString());
-            transacciones.IdDoc = Int32.Parse(row.Cells[3].Value.ToString());
-            transacciones.IdCliente = Int32.Parse(row.Cells[5].Value.ToString());
-            transacciones.NumeroDocumento = Int32.Parse(row.Cells[7].Value.ToString());
-            transacciones.Fecha = Convert.ToDateTime(row.Cells[8].Value.ToString());
-            transacciones.Monto = decimal.Parse(row.Cells[9].Value.ToString());
+            transacciones.IdDoc = Int32.Parse(row.Cells[2].Value.ToString());
+            transacciones.IdCliente = Int32.Parse(row.Cells[3].Value.ToString());
+            transacciones.NumeroDocumento = Int32.Parse(row.Cells[4].Value.ToString());
+            transacciones.Fecha = Convert.ToDateTime(row.Cells[5].Value.ToString());
+            transacciones.Monto = decimal.Parse(row.Cells[6].Value.ToString());
 
             FrmEditar_Transacciones fet = new FrmEditar_Transacciones();
             fet.transacciones = transacciones;
             fet.ShowDialog();
         }
-        #endregion
+
+        
     }
 }
