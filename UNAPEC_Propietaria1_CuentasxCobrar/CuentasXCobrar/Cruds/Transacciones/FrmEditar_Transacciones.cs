@@ -83,28 +83,19 @@ namespace CuentasXCobrar.Cruds.Transacciones
         {
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
-                try
+                entities.Transacciones.Add(new CuentasXCobrar.Transacciones
                 {
-                    entities.Transacciones.Add(new CuentasXCobrar.Transacciones
-                    {
-                        IdTrans = Int32.Parse(nupID.Value.ToString()),
-                        IdMovimiento = Int32.Parse(cbxMovimiento.SelectedValue.ToString()),
-                        IdDoc = Int32.Parse(cbxMovimiento.SelectedValue.ToString()),
-                        IdCliente = Int32.Parse(cbxCliente.SelectedValue.ToString()),
-                        NumeroDocumento = Convert.ToInt32(txtNumeroDoc.Text),
-                        Fecha = dtpFecha.Value,
-                        Monto = Convert.ToDecimal(txtMonto.Text)
-                    });
-                    entities.SaveChanges();
-                    MessageBox.Show("Datos guardados con exito");
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al guardar. Contacte con soporte tecnico.\n \nError: " + ex.ToString());
-                    this.Close();
-                }
-                
+                    IdTrans = Int32.Parse(nupID.Value.ToString()),
+                    IdMovimiento = Int32.Parse(cbxMovimiento.SelectedValue.ToString()),
+                    IdDoc = Int32.Parse(cbxMovimiento.SelectedValue.ToString()),
+                    IdCliente = Int32.Parse(cbxCliente.SelectedValue.ToString()),
+                    NumeroDocumento = Convert.ToInt32(txtNumeroDoc.Text),
+                    Fecha = dtpFecha.Value,
+                    Monto = Convert.ToDecimal(txtMonto.Text)
+                });
+                entities.SaveChanges();
+                MessageBox.Show("Datos guardados con exito");
+                this.Close();
             }
             else
             {
