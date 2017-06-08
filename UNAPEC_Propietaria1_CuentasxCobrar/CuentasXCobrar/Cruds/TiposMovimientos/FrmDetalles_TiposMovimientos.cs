@@ -64,6 +64,7 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
 
         private void FrmDetalles_TiposMovimientos_Activated(object sender, EventArgs e)
         {
+            this.Refresh();
             consultarEmpleados();
         }
 

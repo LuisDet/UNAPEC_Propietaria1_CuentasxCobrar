@@ -28,6 +28,7 @@ namespace CuentasXCobrar.Cruds.Transacciones
 
         private void FrmDetalles_Transacciones_Activated(object sender, EventArgs e)
         {
+            this.Refresh();
             cargarTransacciones();
         }
 

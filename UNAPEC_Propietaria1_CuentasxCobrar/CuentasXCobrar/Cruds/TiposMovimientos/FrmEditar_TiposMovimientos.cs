@@ -34,14 +34,22 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
         {
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
-                entities.TipoMovimientos.Add(new TipoMovimientos
+                try
                 {
-                    IdMovimiento = (int)nupID.Value,
-                    Tipo = TxtTipo.Text,
-                });
-                entities.SaveChanges();
-                MessageBox.Show("Datos guardados con exito");
-                this.Close();
+                    entities.TipoMovimientos.Add(new TipoMovimientos
+                    {
+                        IdMovimiento = (int)nupID.Value,
+                        Tipo = TxtTipo.Text,
+                    });
+                    entities.SaveChanges();
+                    MessageBox.Show("Datos guardados con exito");
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al guardar. Contacte con soporte tecnico.\n \nError: " + ex.ToString());
+                    this.Close();
+                }
             }
             else
             {
