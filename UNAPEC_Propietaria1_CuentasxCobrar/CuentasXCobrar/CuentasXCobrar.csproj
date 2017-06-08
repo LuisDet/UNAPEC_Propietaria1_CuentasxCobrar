@@ -119,6 +119,9 @@
     <Compile Include="Roles.cs">
       <DependentUpon>EFCxC.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>EFCxC.tt</DependentUpon>
+    </Compile>
     <Compile Include="TipoDocumentos.cs">
       <DependentUpon>EFCxC.tt</DependentUpon>
     </Compile>

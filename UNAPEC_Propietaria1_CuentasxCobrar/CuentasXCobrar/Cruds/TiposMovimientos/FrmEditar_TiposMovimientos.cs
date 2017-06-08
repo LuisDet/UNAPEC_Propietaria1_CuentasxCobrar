@@ -90,7 +90,7 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
             int Contador = Movimientos.Count();
 
             bool cancel = false; 
-            if (Contador < 0)
+            if (Contador >= 0)
             {
                 cancel = false;
             }

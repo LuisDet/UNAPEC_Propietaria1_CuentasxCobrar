@@ -21,7 +21,40 @@ namespace CuentasXCobrar
         public int NumeroDocumento { get; set; }
         public System.DateTime Fecha { get; set; }
         public decimal Monto { get; set; }
-    
+
+        public string Tipo_IdMovimiento
+        {
+            get
+            {
+                if (this.TipoMovimientos != null)
+                    return this.TipoMovimientos.Tipo;
+                else
+                    return string.Empty;
+            }
+        }
+
+        public string Descripcion_IdDocumento
+        {
+            get
+            {
+                if (this.TipoDocumentos != null)
+                    return this.TipoDocumentos.Descripcion;
+                else
+                    return string.Empty;
+            }
+        }
+
+        public string Nombre_IdCliente
+        {
+            get
+            {
+                if (this.Clientes != null)
+                    return this.Clientes.Nombre;
+                else
+                    return string.Empty;
+            }
+        }
+
         public virtual Clientes Clientes { get; set; }
         public virtual TipoDocumentos TipoDocumentos { get; set; }
         public virtual TipoMovimientos TipoMovimientos { get; set; }

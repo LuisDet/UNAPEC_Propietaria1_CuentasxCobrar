@@ -71,6 +71,7 @@
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(330, 26);
             this.TxtBuscar.TabIndex = 3;
+            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // tableLayoutPanel1
             // 

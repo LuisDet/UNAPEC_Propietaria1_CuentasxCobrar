@@ -34,12 +34,29 @@ namespace CuentasXCobrar.Cruds.Transacciones
         private void cargarTransacciones()
         {
             dgvTrans.DataSource = entities.Transacciones.ToList();
-            dgvTrans.Columns[7].Visible = false;
-            dgvTrans.Columns[8].Visible = false;
-            dgvTrans.Columns[9].Visible = false;
+            dgvTrans.Columns[1].Visible = false;
+            dgvTrans.Columns[2].Visible = false;
+            dgvTrans.Columns[3].Visible = false;
+            dgvTrans.Columns[10].Visible = false;
+            dgvTrans.Columns[11].Visible = false;
+            dgvTrans.Columns[12].Visible = false;
+
+            dgvTrans.Columns[0].HeaderText = "ID";
+            dgvTrans.Columns[4].HeaderText = "No. Doc.";
+            dgvTrans.Columns[5].HeaderText = "Fecha";
+            dgvTrans.Columns[6].HeaderText = "Monto";
+            dgvTrans.Columns[7].HeaderText = "Movimiento";
+            dgvTrans.Columns[8].HeaderText = "Documento";
+            dgvTrans.Columns[9].HeaderText = "Cliente";
+
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            CargarPorConsulta();
+        }
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
         {
             CargarPorConsulta();
         }
@@ -50,15 +67,22 @@ namespace CuentasXCobrar.Cruds.Transacciones
                             where (em.IdTrans.ToString().StartsWith(TxtBuscar.Text) ||
                             em.NumeroDocumento.ToString().StartsWith(TxtBuscar.Text) ||
                             em.Monto.ToString().StartsWith(TxtBuscar.Text) ||
-                            em.IdMovimiento.ToString().StartsWith(TxtBuscar.Text) ||
-                            em.IdDoc.ToString().StartsWith(TxtBuscar.Text) ||
-                            em.IdCliente.ToString().StartsWith(TxtBuscar.Text)
+                            em.TipoMovimientos.Tipo.ToString().StartsWith(TxtBuscar.Text) ||
+                            em.TipoDocumentos.Descripcion.ToString().StartsWith(TxtBuscar.Text) ||
+                            em.Clientes.Nombre.ToString().StartsWith(TxtBuscar.Text) ||
+                            em.Fecha.ToString().StartsWith(TxtBuscar.Text)
+                            
                             )
                             select em;
             dgvTrans.DataSource = Transacciones_Consulta.ToList();
-            dgvTrans.Columns[7].Visible = false;
-            dgvTrans.Columns[8].Visible = false;
-            dgvTrans.Columns[9].Visible = false;
+
+            dgvTrans.Columns[0].HeaderText = "ID";
+            dgvTrans.Columns[4].HeaderText = "No. Doc.";
+            dgvTrans.Columns[5].HeaderText = "Fecha";
+            dgvTrans.Columns[6].HeaderText = "Monto";
+            dgvTrans.Columns[7].HeaderText = "Movimiento";
+            dgvTrans.Columns[8].HeaderText = "Documento";
+            dgvTrans.Columns[9].HeaderText = "Cliente";
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -90,6 +114,6 @@ namespace CuentasXCobrar.Cruds.Transacciones
             fet.ShowDialog();
         }
 
-        
+
     }
 }

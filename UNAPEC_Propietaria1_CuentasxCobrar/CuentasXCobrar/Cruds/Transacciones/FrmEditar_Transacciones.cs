@@ -30,7 +30,7 @@ namespace CuentasXCobrar.Cruds.Transacciones
             cbxDoc_fillFromDB();
             cbxClientes_fillFromDB();
 
-
+            
             if (transacciones != null)
             {
                 nupID.Value = transacciones.IdTrans;
@@ -45,7 +45,7 @@ namespace CuentasXCobrar.Cruds.Transacciones
         #region Llenado dinamico de ComboBoxes
         private void cbxMovimientos_fillFromDB()
         {
-            string sSql1 = "select * from TipoMovimientos ORDER BY IdMovimiento ";
+            string sSql1 = "select * from TipoMovimientos ORDER BY IdMovimiento";
             SqlDataAdapter oDa1 = new SqlDataAdapter(sSql1, ocon);
             DataTable oTabla1 = new DataTable();
             oDa1.Fill(oTabla1);
@@ -56,7 +56,7 @@ namespace CuentasXCobrar.Cruds.Transacciones
         }
         private void cbxDoc_fillFromDB()
         {
-            string sSql2 = "select * from TipoDocumentos ORDER BY IdDoc ";
+            string sSql2 = "select * from TipoDocumentos ORDER BY IdDoc";
             SqlDataAdapter oDa2 = new SqlDataAdapter(sSql2, ocon);
             DataTable oTabla2 = new DataTable();
             oDa2.Fill(oTabla2);
@@ -68,7 +68,7 @@ namespace CuentasXCobrar.Cruds.Transacciones
 
         private void cbxClientes_fillFromDB()
         {
-            string sSql3 = "select * from Clientes ORDER BY IdCliente ";
+            string sSql3 = "select * from Clientes ORDER BY IdCliente";
             SqlDataAdapter oDa3 = new SqlDataAdapter(sSql3, ocon);
             DataTable oTabla3 = new DataTable();
             oDa3.Fill(oTabla3);
@@ -83,19 +83,26 @@ namespace CuentasXCobrar.Cruds.Transacciones
         {
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
-                entities.Transacciones.Add(new CuentasXCobrar.Transacciones
+                try
                 {
-                    IdTrans = Int32.Parse(nupID.Value.ToString()),
-                    IdMovimiento = Int32.Parse(cbxMovimiento.SelectedValue.ToString()),
-                    IdDoc = Int32.Parse(cbxMovimiento.SelectedValue.ToString()),
-                    IdCliente = Int32.Parse(cbxCliente.SelectedValue.ToString()),
-                    NumeroDocumento = Convert.ToInt32(txtNumeroDoc.Text),
-                    Fecha = dtpFecha.Value,
-                    Monto = Convert.ToDecimal(txtMonto.Text)
-                });
-                entities.SaveChanges();
-                MessageBox.Show("Datos guardados con exito");
-                this.Close();
+                    entities.Transacciones.Add(new CuentasXCobrar.Transacciones
+                    {
+                        IdTrans = Int16.Parse(nupID.Value.ToString()),
+                        IdMovimiento = Int32.Parse(cbxMovimiento.SelectedValue.ToString()),
+                        IdDoc = Int32.Parse(cbxDoc.SelectedValue.ToString()),
+                        IdCliente = Int32.Parse(cbxCliente.SelectedValue.ToString()),
+                        NumeroDocumento = Convert.ToInt32(txtNumeroDoc.Text),
+                        Fecha = dtpFecha.Value,
+                        Monto = Convert.ToDecimal(txtMonto.Text)
+                    });
+                    entities.SaveChanges();
+                    MessageBox.Show("Datos guardados con exito");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error:\n\n" + ex.Message);
+                }
+            this.Close();
             }
             else
             {
@@ -138,7 +145,7 @@ namespace CuentasXCobrar.Cruds.Transacciones
             int Contador = Trans.Count();
 
             bool cancel = false;
-            if (Contador <= 0)
+            if (Contador >= 0)
             {
                 cancel = false;
             }

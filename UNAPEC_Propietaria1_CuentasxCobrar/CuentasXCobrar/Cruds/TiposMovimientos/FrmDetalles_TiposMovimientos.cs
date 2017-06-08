@@ -28,12 +28,19 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
 
         private void consultarEmpleados()
         {
-            var Movimientos = from em in entities.TipoMovimientos
-                              select new { em.IdMovimiento, em.Tipo };
-            dgvTiposMovimientos.DataSource = Movimientos.ToList();
+            dgvTiposMovimientos.DataSource = entities.TipoMovimientos.ToList();
+            dgvTiposMovimientos.Columns[2].Visible = false;
+            dgvTiposMovimientos.Columns[3].Visible = false;
+
+            dgvTiposMovimientos.Columns[0].HeaderText = "ID";
+            dgvTiposMovimientos.Columns[1].HeaderText = "Tipo";
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            consultarPorCriterio();
+        }
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
         {
             consultarPorCriterio();
         }
@@ -45,6 +52,9 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
                             )
                             select new { em.IdMovimiento, em.Tipo };
             dgvTiposMovimientos.DataSource = Movimientos.ToList();
+
+            dgvTiposMovimientos.Columns[0].HeaderText = "ID";
+            dgvTiposMovimientos.Columns[1].HeaderText = "Tipo";
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -75,5 +85,7 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
         {
             Application.Exit();
         }
+
+
     }
 }
