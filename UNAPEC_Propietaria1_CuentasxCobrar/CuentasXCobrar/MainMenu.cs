@@ -12,6 +12,7 @@ namespace CuentasXCobrar
 {
     public partial class MainMenu : Form
     {
+        public Usuarios UsuarioConectado { get; set; }
         public MainMenu()
         {
             InitializeComponent();
@@ -33,6 +34,27 @@ namespace CuentasXCobrar
         {
             Cruds.Transacciones.FrmDetalles_Transacciones form = new Cruds.Transacciones.FrmDetalles_Transacciones();
             form.ShowDialog();
+        }
+        #region Login
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            InicioSesionForm fl = new InicioSesionForm();
+            fl.Show();
+        }
+        #endregion
+
+        private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+            if (UsuarioConectado != null)
+            {
+                labUsuario.Text = UsuarioConectado.Usuario;
+            }
         }
     }
 }
