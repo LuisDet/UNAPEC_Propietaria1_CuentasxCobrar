@@ -38,9 +38,9 @@ namespace CuentasXCobrar
         #region Login
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
             InicioSesionForm fl = new InicioSesionForm();
             fl.Show();
+            this.Close();
         }
         #endregion
 

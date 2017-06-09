@@ -50,6 +50,7 @@ namespace CuentasXCobrar
                     UsuarioConectado.Usuario = txtUsuario.Text;
                     fm.UsuarioConectado = UsuarioConectado;
                     fm.Show();
+                    this.Hide();
                 }
                 else
                 {

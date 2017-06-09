@@ -136,13 +136,9 @@
             this.nupID.Dock = System.Windows.Forms.DockStyle.Left;
             this.nupID.Location = new System.Drawing.Point(106, 3);
             this.nupID.Name = "nupID";
+            this.nupID.ReadOnly = true;
             this.nupID.Size = new System.Drawing.Size(172, 20);
             this.nupID.TabIndex = 4;
-            this.nupID.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nupID.Validating += new System.ComponentModel.CancelEventHandler(this.nupID_Validating);
             this.nupID.Validated += new System.EventHandler(this.nupID_Validated);
             // 
@@ -209,6 +205,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmEditar_TiposMovimientos";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar/Editar";
             this.Load += new System.EventHandler(this.FrmEditar_TiposMovimientos_Load);

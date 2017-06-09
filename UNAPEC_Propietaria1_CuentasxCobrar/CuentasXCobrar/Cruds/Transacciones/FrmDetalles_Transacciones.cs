@@ -94,6 +94,10 @@ namespace CuentasXCobrar.Cruds.Transacciones
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Application.Exit();
+        }
+        private void regresarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
 
@@ -112,8 +116,15 @@ namespace CuentasXCobrar.Cruds.Transacciones
             FrmEditar_Transacciones fet = new FrmEditar_Transacciones();
             fet.transacciones = transacciones;
             fet.ShowDialog();
+            fet.Focus();
         }
 
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            Reportes.Transacciones.frmReporte_Transacciones form = new Reportes.Transacciones.frmReporte_Transacciones();
+            form.ShowDialog();
+            form.Focus();
+        }
 
     }
 }

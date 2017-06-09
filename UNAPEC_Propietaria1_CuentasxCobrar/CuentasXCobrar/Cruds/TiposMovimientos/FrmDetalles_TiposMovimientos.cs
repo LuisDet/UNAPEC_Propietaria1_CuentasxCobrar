@@ -86,6 +86,9 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
             Application.Exit();
         }
 
-
+        private void regresarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

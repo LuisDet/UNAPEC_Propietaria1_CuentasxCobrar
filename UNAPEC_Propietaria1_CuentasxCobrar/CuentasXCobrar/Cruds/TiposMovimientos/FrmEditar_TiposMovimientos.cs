@@ -28,6 +28,13 @@ namespace CuentasXCobrar.Cruds.TiposMovimientos
                 nupID.Value = movimientos.IdMovimiento;
                 TxtTipo.Text = movimientos.Tipo;
             }
+            else
+            {
+                var IdMovimiento_NUD = from em in entities.TipoMovimientos
+                                  orderby em.IdMovimiento descending
+                                  select em.IdMovimiento;
+                nupID.Value = (IdMovimiento_NUD.FirstOrDefault() + 1);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

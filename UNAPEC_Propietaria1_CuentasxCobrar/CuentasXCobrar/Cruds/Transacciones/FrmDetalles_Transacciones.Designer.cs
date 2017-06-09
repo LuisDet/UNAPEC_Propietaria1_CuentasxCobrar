@@ -38,17 +38,21 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regresarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvTrans = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrans)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -56,7 +60,7 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Right;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 0);
+            this.label3.Location = new System.Drawing.Point(6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 35);
             this.label3.TabIndex = 1;
@@ -67,26 +71,26 @@
             // 
             this.TxtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TxtBuscar.Location = new System.Drawing.Point(116, 3);
+            this.TxtBuscar.Location = new System.Drawing.Point(110, 3);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(330, 26);
+            this.TxtBuscar.Size = new System.Drawing.Size(237, 26);
             this.TxtBuscar.TabIndex = 3;
             this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.16704F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.83296F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.57143F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.42857F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.TxtBuscar, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(21, 25);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 35);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(449, 35);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(350, 35);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox1
@@ -96,7 +100,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 112);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(560, 75);
+            this.groupBox1.Size = new System.Drawing.Size(430, 84);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar";
@@ -105,7 +109,7 @@
             // 
             this.btnBuscar.BackgroundImage = global::CuentasXCobrar.Properties.Resources.Buscar;
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.Location = new System.Drawing.Point(489, 19);
+            this.btnBuscar.Location = new System.Drawing.Point(373, 29);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(45, 45);
             this.btnBuscar.TabIndex = 1;
@@ -116,7 +120,7 @@
             // 
             this.btnAgregar.BackgroundImage = global::CuentasXCobrar.Properties.Resources.Agregar;
             this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgregar.Location = new System.Drawing.Point(39, 25);
+            this.btnAgregar.Location = new System.Drawing.Point(41, 25);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(45, 45);
             this.btnAgregar.TabIndex = 2;
@@ -147,15 +151,23 @@
             // inicioToolStripMenuItem
             // 
             this.inicioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.regresarToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
             this.inicioToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.inicioToolStripMenuItem.Text = "&Inicio";
             // 
+            // regresarToolStripMenuItem
+            // 
+            this.regresarToolStripMenuItem.Name = "regresarToolStripMenuItem";
+            this.regresarToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.regresarToolStripMenuItem.Text = "&Regresar";
+            this.regresarToolStripMenuItem.Click += new System.EventHandler(this.regresarToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -182,7 +194,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dgvTrans);
-            this.panel1.Location = new System.Drawing.Point(13, 194);
+            this.panel1.Location = new System.Drawing.Point(13, 204);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(559, 305);
             this.panel1.TabIndex = 11;
@@ -205,11 +217,34 @@
             this.dgvTrans.TabIndex = 0;
             this.dgvTrans.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrans_CellDoubleClick);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.groupBox3.Location = new System.Drawing.Point(451, 112);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(121, 85);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Reportes";
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::CuentasXCobrar.Properties.Resources.Editar;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(41, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(45, 45);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnReport_Click);
+            // 
             // FrmDetalles_Transacciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 511);
+            this.ClientSize = new System.Drawing.Size(584, 521);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
@@ -222,6 +257,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmDetalles_Transacciones";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transacciones";
             this.Activated += new System.EventHandler(this.FrmDetalles_Transacciones_Activated);
@@ -234,6 +270,7 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrans)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,5 +292,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvTrans;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem regresarToolStripMenuItem;
     }
 }

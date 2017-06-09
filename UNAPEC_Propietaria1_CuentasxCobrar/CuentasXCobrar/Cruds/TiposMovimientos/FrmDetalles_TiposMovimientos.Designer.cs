@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetalles_TiposMovimientos));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regresarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.regresarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -64,15 +65,23 @@
             // inicioToolStripMenuItem
             // 
             this.inicioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.regresarToolStripMenuItem1,
             this.regresarToolStripMenuItem});
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
             this.inicioToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.inicioToolStripMenuItem.Text = "&Inicio";
             // 
+            // regresarToolStripMenuItem1
+            // 
+            this.regresarToolStripMenuItem1.Name = "regresarToolStripMenuItem1";
+            this.regresarToolStripMenuItem1.Size = new System.Drawing.Size(119, 22);
+            this.regresarToolStripMenuItem1.Text = "&Regresar";
+            this.regresarToolStripMenuItem1.Click += new System.EventHandler(this.regresarToolStripMenuItem1_Click);
+            // 
             // regresarToolStripMenuItem
             // 
             this.regresarToolStripMenuItem.Name = "regresarToolStripMenuItem";
-            this.regresarToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.regresarToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.regresarToolStripMenuItem.Text = "&Salir";
             this.regresarToolStripMenuItem.Click += new System.EventHandler(this.SalirToolStripMenuItem_Click);
             // 
@@ -216,6 +225,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmDetalles_TiposMovimientos";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipos de Movimientos";
             this.Activated += new System.EventHandler(this.FrmDetalles_TiposMovimientos_Activated);
@@ -249,5 +259,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.ToolStripMenuItem regresarToolStripMenuItem1;
     }
 }

@@ -39,7 +39,15 @@ namespace CuentasXCobrar.Cruds.Transacciones
                 cbxCliente.SelectedValue = transacciones.IdCliente;
                 txtNumeroDoc.Text = transacciones.NumeroDocumento.ToString();
                 txtMonto.Text = transacciones.Monto.ToString();
-            } 
+            }
+            else
+            {
+                var IdTrans_NUD = from em in entities.Transacciones
+                                  orderby em.IdTrans descending
+                                  select em.IdTrans;
+                nupID.Value = (IdTrans_NUD.FirstOrDefault() + 1);
+            }
+
         }
 
         #region Llenado dinamico de ComboBoxes
