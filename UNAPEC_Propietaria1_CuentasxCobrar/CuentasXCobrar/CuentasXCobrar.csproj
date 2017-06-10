@@ -82,6 +82,31 @@
     <Compile Include="Clientes.cs">
       <DependentUpon>EFCxC.tt</DependentUpon>
     </Compile>
+</Compile>
+    <Compile Include="Cruds\Asientos_Contables\FrmDetalles_AsientosContables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cruds\Asientos_Contables\FrmDetalles_AsientosContables.Designer.cs">
+      <DependentUpon>FrmDetalles_AsientosContables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cruds\Asientos_Contables\FrmEdAsientosContables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cruds\Asientos_Contables\FrmEdAsientosContables.Designer.cs">
+      <DependentUpon>FrmEdAsientosContables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cruds\TiposDocumentos\FrmDtTiposDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cruds\TiposDocumentos\FrmDtTiposDocumentos.Designer.cs">
+      <DependentUpon>FrmDtTiposDocumentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cruds\TiposDocumentos\FrmEdTiposDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cruds\TiposDocumentos\FrmEdTiposDocumentos.Designer.cs">
+      <DependentUpon>FrmEdTiposDocumentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cruds\TiposMovimientos\FrmDetalles_TiposMovimientos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +185,12 @@
     <Compile Include="Usuarios.cs">
       <DependentUpon>EFCxC.tt</DependentUpon>
     </Compile>
+</Compile>
+    <Compile Include="DBCuentasxCobrarDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Cruds\TiposMovimientos\FrmDetalles_TiposMovimientos.resx">
       <DependentUpon>FrmDetalles_TiposMovimientos.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +229,17 @@
     </EntityDeploy>
     <None Include="EFCxC.edmx.diagram">
       <DependentUpon>EFCxC.edmx</DependentUpon>
+    </None>
+<None Include="DBCuentasxCobrarDataSet.xsc">
+      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBCuentasxCobrarDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCuentasxCobrarDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBCuentasxCobrarDataSet.xss">
+      <DependentUpon>DBCuentasxCobrarDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Transacciones.datasource" />
